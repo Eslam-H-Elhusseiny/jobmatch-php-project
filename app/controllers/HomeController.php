@@ -21,12 +21,12 @@ class HomeController
    */
   public function index()
   {
-    // $listings = $this->db->query('SELECT * FROM listings LIMIT 6')->fetchAll();
+    $listings = $this->db->query('SELECT * FROM jobs LIMIT 6')->fetchAll();
+    // inspectAndDie($listings);
+    loadView('home', [
+      'listings' => $listings
+    ]);
 
-    // loadView('home', [
-    //   'listings' => $listings
-    // ]);
-
-    loadView('home');
+    // loadView('home');
   }
 }

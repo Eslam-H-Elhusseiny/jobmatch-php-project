@@ -4,5 +4,5 @@ return [
     'port' => '3306',
     'dbname' => 'job_match',
     'username' => "root",
-    'password' => ''
+    'password' => '5Fe20ugo@s4s'
 ];

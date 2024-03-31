@@ -1,5 +1,23 @@
 <?php
+
+/**
+ * Home Route
+ */
+
 $router->get('/', 'HomeController@index');
-// $router->get('/listings', 'ListingController@index');
-// $router->get('/listings/create', 'ListingController@create');
-// $router->get('/listing/{id}', 'ListingController@show');
+
+/**
+ * Jobs Routes
+ */
+
+$router->get('/jobs', 'JobsController@index');
+$router->get('/jobs/{id}', 'JobsController@show');
+
+
+/**
+ * User Routes
+ */
+
+
+// $router->get('/profile', 'OrganizationController@index');
+
