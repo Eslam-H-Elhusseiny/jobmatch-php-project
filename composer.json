@@ -1,0 +1,16 @@
+{
+  "name": "menm/jobmatch",
+  "description": "ITI PHP Project",
+  "authors": [
+    {
+      "name": "MENM Team",
+      "email": "iti@iti.gov"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
