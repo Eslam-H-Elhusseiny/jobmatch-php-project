@@ -7,6 +7,11 @@
   <div class="container my-4">
     <form method="POST" action="/auth/register" class="bg-white w-75 mx-auto p-4 rounded shadow-sm border-1 text-capitalize">
       <h2 class="text-4xl text-center font-bold mb-4">Registeration Form</h2>
+      <div class="selection d-flex align-items-center justify-content-center">
+        <h5 class="mx-2"><a href="" class="createOption active">Personnal Account</a></h5>
+        <h5 class="mx-2"><a href="" class="createOption">Organization</a></h5>
+      </div>
+      <hr>
       <div class="alert">
         <?= loadPartial('errors', ['errors' => $errors ?? []]) ?>
       </div>
@@ -31,8 +36,8 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="phone_num" type="text" name="phone_num" placeholder="phone_num" class="form-control w-100 py-1" value="<?= $user['phone_num'] ?? '' ?>" />
-            <label class="" for="phone_num">phone_num</label class="">
+            <input id="phone_num" type="text" name="phone_num" placeholder="phone number" class="form-control w-100 py-1" value="<?= $user['phone_num'] ?? '' ?>" />
+            <label class="" for="phone_num">phone number</label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">

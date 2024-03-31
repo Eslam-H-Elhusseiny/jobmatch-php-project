@@ -429,6 +429,12 @@ footer {
   }
 }
 
+/*  *ANCHOR - REGISRERATION FORM */
+.createOption.active{
+  color: var(--color-accent-washed);
+  text-decoration: underline;
+}
+/* *STUB - End Register */
 /* Newsletter */
 
 .news-letter p {
