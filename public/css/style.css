@@ -124,7 +124,7 @@ header {
 }
 
 section {
-  padding-block: 4rem;
+  padding-block: 5rem;
 }
 
 .section-heading-wrapper {
@@ -148,8 +148,8 @@ section {
 
 /* *SECTION - Jobs-Gird */
 
-.jobs-container {
-  max-width: 80rem;
+.jobs-section {
+  margin-top: -4rem;
 }
 
 .job-grid {
@@ -257,6 +257,122 @@ section {
   .how-image {
     transition: var(--transition-short) ease-out;
   }
+}
+
+/* *SECTION - Recent News Articles */
+
+.news-section {
+  background-color: var(--background-color-grey);
+}
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.news-card .image {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.news-card img {
+  border-radius: 0.5rem;
+  transition: var(--transition-mid);
+}
+
+.news-card:hover img {
+  scale: 1.05;
+}
+
+.news-card:hover .title {
+  color: #1877f2;
+}
+
+.news-card:hover .title a {
+  margin-left: 0.5rem;
+}
+
+.news-card .timestamp {
+  margin-block: 0.5rem;
+  font-size: var(--fsize-100);
+  color: var(--text-color-light);
+
+  .seperator {
+    margin-inline: 0.5rem;
+  }
+}
+
+.news-card .title {
+  width: 41ch;
+  transition: var(--transition-short);
+
+  h4 {
+    font-size: var(--fsize-300);
+    cursor: pointer;
+  }
+
+  p {
+    margin-block: 0.5rem;
+    color: var(--text-color-light);
+  }
+
+  a {
+    color: #1877f2;
+    font-size: 0.9rem;
+    transition: var(--transition-short);
+  }
+}
+
+/* *SECTION - Sponsor */
+
+.sponsor-container {
+  position: relative;
+  z-index: 5;
+  padding-top: 2rem;
+  height: 8rem;
+  margin-bottom: -2rem;
+  padding-inline: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  overflow-x: auto;
+}
+
+.sponsor-container img {
+  transition: var(--transition-short);
+}
+
+.sponsor-container img:hover {
+  scale: 1.2;
+}
+
+/* SCORLLBAR S T Y L E */
+
+.sponsor-container::-webkit-scrollbar {
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.342);
+}
+
+.sponsor-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.295);
+}
+
+.sponsor-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+  background-color: #3480f1;
 }
 
 /* ====================== */
