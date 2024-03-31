@@ -1,9 +1,11 @@
 <?= loadPartial('head') ?>
-<?= loadPartial('navbar') ?>
 
-<div class="flex justify-center items-center mt-20">
-  <div class="container my4">
-    <form method="POST" action="/auth/register" class="bg-white w-75 mx-auto p-4 rounded shadow-sm border-1">
+<body class="bg-light">
+  <head >
+    <?php loadPartial('navbar'); ?>
+  </head>
+  <div class="container my-4">
+    <form method="POST" action="/auth/register" class="bg-white w-75 mx-auto p-4 rounded shadow-sm border-1 text-capitalize">
       <h2 class="text-4xl text-center font-bold mb-4">Registeration Form</h2>
       <div class="alert">
         <?= loadPartial('errors', ['errors' => $errors ?? []]) ?>
@@ -60,7 +62,6 @@
             </select>
           </div>
         </div>
-        
         <div class="col-12 col-md-6">
           <div class="mb-4 d-flex align-items-center">
             <label class="pb-3 w-auto" for="bdate">Birth Date</label>
@@ -91,19 +92,17 @@
             <label class="text-tertiary" for="password_confirmation">password confirmation</label class="">
           </div>
         </div>
-
-
       </div>
-      <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded focus:outline-none">
-        Register
-      </button>
-
+      <div class="col-8 offset-2">
+        <button type="submit" class="btn btn-primary w-100">
+          Register
+        </button>
+      </div>
       <p class="mt-4 text-gray-500">
         Already have an account?
-        <a class="text-blue-900" href="/auth/login">Login</a>
+        <a class="text-primary text-underline" href="/auth/login">Login</a>
       </p>
     </form>
   </div>
-</div>
 
-<?= loadPartial('footer') ?>
+  <?= loadPartial('footer') ?>

@@ -21,7 +21,7 @@
 
   /* Colors */
   --background-color: #fff;
-  --background-color-grey: #fafafa;
+  --background-color-grey: #f8fbff;
   --background-color-dark: #b6b6b6;
 
   --color-primary-dark: #1a1b21;
@@ -102,7 +102,7 @@ ul {
 
 .container {
   margin: 0 auto;
-  max-width: 75rem;
+  max-width: 80rem;
   width: 80%;
 }
 
