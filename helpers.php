@@ -30,7 +30,6 @@ function loadView($name, $data = [])
   }
 }
 
-
 /**
  * Load a partial
  * 

@@ -28,7 +28,12 @@ use Framework\Session;
             <a href="/auth/login" class="text-white hover:underline">Login</a>
           </li>
           <li>
-            <a href="/auth/register" class="text-white hover:underline">Register</a>
+            <!-- <a href="/auth/register" class="text-white hover:underline">Register</a> -->
+            <select class="form-select bg-transparent border-0 text-light" onchange="location = this.value;">
+              <option value="#" selected disabled>Register</option>
+              <option class="text-primary" value="/auth/user/register">User</option>
+              <option class="text-primary" value="/auth/organization/register">Organization</option>
+            </select>
           </li>
         </ul>
       <?php endif; ?>

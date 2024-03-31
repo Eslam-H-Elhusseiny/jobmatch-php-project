@@ -33,7 +33,7 @@ class UserController
    */
   public function create()
   {
-    loadView('users/create');
+    loadView('users/createUser');
   }
   /**
    * Store user in database
@@ -82,7 +82,7 @@ class UserController
     }
 
     if (!empty($errors)) {
-      loadView('users/create', [
+      loadView('users/createUser', [
         'errors' => $errors,
         'user' => [
           'fname' => $fname,
@@ -110,7 +110,7 @@ class UserController
 
     if ($user) {
       $errors['email'] = 'That email already exists';
-      loadView('users/create', [
+      loadView('users/createUser', [
         'errors' => $errors
       ]);
       exit;

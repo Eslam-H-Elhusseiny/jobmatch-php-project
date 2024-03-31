@@ -5,11 +5,11 @@
     <?php loadPartial('navbar'); ?>
   </head>
   <div class="container my-4">
-    <form method="POST" action="/auth/register" class="bg-white w-75 mx-auto p-4 rounded shadow-sm border-1 text-capitalize">
+    <form method="POST" action="/auth/user/register" class="bg-white w-75 mx-auto p-4 rounded shadow-sm border-1 text-capitalize">
       <h2 class="text-4xl text-center font-bold mb-4">Registeration Form</h2>
       <div class="selection d-flex align-items-center justify-content-center">
-        <h5 class="mx-2"><a href="" class="createOption active">Personnal Account</a></h5>
-        <h5 class="mx-2"><a href="" class="createOption">Organization</a></h5>
+        <h5 class="mx-2"><a href="/auth/user/register" class="createOption active">Personnal Account</a></h5>
+        <h5 class="mx-2"><a href="/auth/organization/register" class="createOption">Organization</a></h5>
       </div>
       <hr>
       <div class="alert">
