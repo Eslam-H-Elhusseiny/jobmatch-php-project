@@ -35,7 +35,6 @@ class UserController
   {
     loadView('users/create');
   }
-
   /**
    * Store user in database
    * 
@@ -43,11 +42,18 @@ class UserController
    */
   public function store()
   {
+    // inspectAndDie('Store');
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
+    $phone_num = $_POST['phone_num'];
+    $title  = $_POST['title'];
+    $gender  = $_POST['gender'];
+    $bdate  = $_POST['bdate'];
+    $country = $_POST['country'];
+    $experience  = $_POST['experience'];
     $email = $_POST['email'];
     $city = $_POST['city'];
-    $state = $_POST['state'];
+    $bio = $_POST['bio'];
     $password = $_POST['password'];
     $passwordConfirmation = $_POST['password_confirmation'];
 
@@ -82,9 +88,15 @@ class UserController
           'fname' => $fname,
           'lname' => $lname,
           'email' => $email,
+          'phone_num' => $phone_num,
+          'bio' => $bio,
+          'bdate' => $bdate,
+          'title' => $title,
+          'experience' => $experience,
+          'gender' => $gender,
+          'country' => $country,
           'city' => $city,
-          'state' => $state,
-        ]
+            ]
       ]);
       exit;
     }
@@ -94,7 +106,7 @@ class UserController
       'email' => $email
     ];
 
-    $user = $this->db->query('SELECT * FROM users WHERE email = :email', $params)->fetch();
+    $user = $this->db->query('SELECT * FROM applicants WHERE email = :email', $params)->fetch();
 
     if ($user) {
       $errors['email'] = 'That email already exists';
@@ -109,12 +121,18 @@ class UserController
       'fname' => $fname,
       'lname' => $lname,
       'email' => $email,
+      'phone_num' => $phone_num,
+      'bio' => $bio,
+      'bdate' => $bdate,
+      'title' => $title,
+      'experience' => $experience,
+      'gender' => $gender,
+      'country' => $country,
       'city' => $city,
-      'state' => $state,
       'password' => password_hash($password, PASSWORD_DEFAULT)
     ];
 
-    $this->db->query('INSERT INTO users (fname,lname, email, city, state, password) VALUES (:fname, :lname, :email, :city, :state, :password)', $params);
+    $this->db->query('INSERT INTO applicants (fname, lname, email, phone_num, bio, bdate, title, experience, gender, country, city, password) VALUES (:fname, :lname, :email, :phone_num, :bio, :bdate, :title, :experience, :gender, :country, :city, :password)', $params);
 
     // Get new user ID
     $userId = $this->db->conn->lastInsertId();
@@ -125,9 +143,15 @@ class UserController
       'fname' => $fname,
       'lname' => $lname,
       'email' => $email,
+      'phone_num' => $phone_num,
+      'bio' => $bio,
+      'bdate' => $bdate,
+      'title' => $title,
+      'experience' => $experience,
+      'gender' => $gender,
+      'country' => $country,
       'city' => $city,
-      'state' => $state
-    ]);
+]);
 
     redirect('/');
   }
@@ -181,7 +205,7 @@ class UserController
       'email' => $email
     ];
 
-    $user = $this->db->query('SELECT * FROM users WHERE email = :email', $params)->fetch();
+    $user = $this->db->query('SELECT * FROM applicants WHERE email = :email', $params)->fetch();
 
     if (!$user) {
       $errors['email'] = 'Incorrect credentials';
@@ -206,8 +230,14 @@ class UserController
       'fname' => $user->fname,
       'lname' => $user->lname,
       'email' => $user->email,
+      'phone_num' => $user->phone_num,
+      'bio' => $user->bio,
+      'bdate' => $user->bdate,
+      'title' => $user->title,
+      'experience' => $user->experience,
+      'gender' => $user->gender,
+      'country' => $user->country,
       'city' => $user->city,
-      'state' => $user->state
     ]);
 
     redirect('/');
