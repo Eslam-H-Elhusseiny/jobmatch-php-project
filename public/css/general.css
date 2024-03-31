@@ -21,7 +21,7 @@
 
   /* Colors */
   --background-color: #fff;
-  --background-color-grey: #f8fbff;
+  --background-color-grey: rgba(245, 247, 252, 0.8);
   --background-color-dark: #b6b6b6;
 
   --color-primary-dark: #1a1b21;
@@ -40,8 +40,8 @@
   --color-border-light: rgba(211, 211, 211, 0.75);
   --color-border-dark: rgba(0, 0, 0, 0.3);
 
-  --button-color: #1a489e;
-  --button-color-hover: #5d80c0;
+  --button-color: #1967d2;
+  --button-color-hover: #344ca9;
 
   /* Typography */
 
@@ -86,6 +86,11 @@ body {
   font-family: "Jost", sans-serif;
   color: var(--text-color-dark);
   position: relative;
+}
+
+button {
+  font-family: "Jost", sans-serif;
+  cursor: pointer;
 }
 
 a {

@@ -2,4 +2,6 @@
 
 require '../helpers.php';
 
-loadView('home');
+// loadView('home');
+// loadView('jobs/index');
+loadView('jobs/show');
