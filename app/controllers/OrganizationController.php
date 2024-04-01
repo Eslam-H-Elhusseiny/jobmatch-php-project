@@ -42,7 +42,7 @@ class OrganizationController
    */
   public function store()
   {
-    // inspectAndDie('Store');
+    // inspectAndDie($store);
     $org_name = $_POST['org_name'];
     $country = $_POST['country'];
     $city = $_POST['city'];
@@ -224,7 +224,7 @@ class OrganizationController
       'website' => $organization->website,
       'linkedin' => $organization->linkedin,
   ]);
-
+  // inspectAndDie($_SESSION['']);
     redirect('/');
   }
 }

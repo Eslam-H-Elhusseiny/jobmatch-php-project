@@ -1,4 +1,24 @@
-<?= loadPartial('head') ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/general.css?<?= time() ?>">
+    <link rel="stylesheet" href="/css/style.css?<?= time() ?>">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    <title>Job Match| Register</title>
+  </head>
 
 <body class="bg-light">
 
@@ -47,12 +67,6 @@
             <label class="" for="title">title</label class="">
           </div>
         </div>
-        <div class="col-12 col-md-6">
-          <div class="form-floating mb-4">
-            <input id="bio" type="text" name="bio" placeholder="bio" class="form-control w-100 " value="<?= $user['bio'] ?? '' ?>" />
-            <label class="" for="bio">bio</label class="">
-          </div>
-        </div>
         <div class="col-12 col-md-3">
           <div class="form-floating mb-4">
             <input id="experience" type="number" name="experience" placeholder="experience" class="form-control w-100 " value="<?= $user['experience'] ?? '' ?>" />
@@ -70,17 +84,17 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="mb-4 d-flex align-items-center">
-            <label class="pb-3 w-auto" for="bdate">Birth Date</label>
+            <label class="pb-3 w-50" for="bdate">Birth Date</label>
             <input id="bdate" type="date" name="bdate" placeholder="Birth Date" class="form-control w-100  flex-grow-1" value="<?= $user['bdate'] ?? '' ?>" max="<?= date('Y-m-d') ?>" />
           </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-3">
           <div class="form-floating mb-4">
             <input id="country" type="text" name="country" placeholder="country" class="form-control w-100 " value="<?= $user['country'] ?? '' ?>" />
             <label class="" for="country">country</label class="">
           </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-3">
           <div class="form-floating mb-4">
             <input id="city" type="text" name="city" placeholder="city" class="form-control w-100 " value="<?= $user['city'] ?? '' ?>" />
             <label class="" for="city">city</label class="">
@@ -98,6 +112,13 @@
             <label class="text-tertiary" for="password_confirmation">password confirmation</label class="">
           </div>
         </div>
+        <div class="col-12">
+          <div class="form-floating mb-4">
+            <textarea id="bio" type="text" name="bio" placeholder="bio" class="form-control w-100 " value="<?= $user['bio'] ?? '' ?>" ></textarea>
+            <label class="" for="bio">bio</label class="">
+          </div>
+        </div>
+
       </div>
       <div class="col-8 offset-2">
         <button type="submit" class="btn btn-primary w-100">
