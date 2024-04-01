@@ -1,5 +1,5 @@
 <nav class="container nav-bar">
-  <a href="/"> <img src="images/logo.svg" alt="logo" /> </a>
+  <a href="/"> <img src="/images/logo.svg" alt="logo" /> </a>
   <div class="nav-links">
     <ul>
       <li><a href="/">Home</a></li>

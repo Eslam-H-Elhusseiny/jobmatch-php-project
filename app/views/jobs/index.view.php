@@ -10,13 +10,14 @@
   <main>
     <section class="search-section">
       <div class="search-jobslist">
-        <form action="/jobs/search" method="get" class="search-bar">
+        <form action="/jobs/search" method="GET" class="search-bar">
           <input
             class="search-input"
             type="text"
+            name="keywords"
             placeholder="Search jobs, companies and more.."
           />
-          <button href="#" class="search-icon">
+          <button class="search-icon">
             <i class="fa fa-search"></i>
           </button>
         </form>
@@ -58,7 +59,7 @@
                 <i class="fa fa-bookmark"></i>
               </a>
               <div class="company-logo">
-                <a href="">
+                <a href="/jobs/<?= $job->id?>">
                   <img
                     width="90"
                     src="https://apusthemes.com/wp-demo/superio/wp-content/uploads/2021/03/y9.jpg"
@@ -69,7 +70,7 @@
               <div class="job-content">
                 <div class="title-wrapper">
                   <h3 class="job-title">
-                    <a href=""><?= $job->title ?></a>
+                    <a href="/jobs/<?= $job->id?>"><?= $job->title ?></a>
                   </h3>
                   <span class="featured">Featured</span>
 

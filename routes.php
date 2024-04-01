@@ -11,9 +11,11 @@ $router->get('/', 'HomeController@index');
  */
 
 $router->get('/jobs', 'JobsController@index');
+$router->get('/jobs/search', 'JobsController@search');
 $router->get('/jobs/{id}', 'JobsController@show');
-$router->get('/job', 'JobsController@show');
-
+// $router->get('/job', 'JobsController@show');
+// $router->get('/jobs/create', 'JobsController@create');
+// $router->get('/jobs/edit/{id}', 'JobsController@edit');
 
 /**
  * User Routes
@@ -22,3 +24,4 @@ $router->get('/job', 'JobsController@show');
 
 // $router->get('/profile', 'OrganizationController@index');
 
+$router->get('/user/{id}/jobs', 'JobsController@appliedJobs');

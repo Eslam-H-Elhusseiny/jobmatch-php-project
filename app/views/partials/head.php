@@ -12,8 +12,8 @@
       referrerpolicy="no-referrer"
     />
 
-    <link rel="stylesheet" href="css/general.css?<?php echo time(); ?>" />
-    <link rel="stylesheet" href="css/style.css?<?php echo time(); ?>" />
+    <link rel="stylesheet" href="/css/general.css?<?php echo time(); ?>" />
+    <link rel="stylesheet" href="/css/style.css?<?php echo time(); ?>" />
 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 

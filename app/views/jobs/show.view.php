@@ -25,7 +25,7 @@
           </div>
           <div class="job-content">
             <div class="title-wrapper">
-              <h2 class="job-title">Junior Graphic Designer</h2>
+              <h2 class="job-title"></h2>
               <span class="featured">Featured</span>
               <span class="filled">Filled</span>
             </div>

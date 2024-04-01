@@ -48,14 +48,14 @@ class JobsController
      */
     public function show($params)
     {
-        // $id = $params['id'] ?? '';
+        $id = $params['id'] ?? '';
         // inspectAndDie($id);
 
-        // $params = [
-        //     'id' => $id,
-        // ];
+        $params = [
+            'id' => $id,
+        ];
 
-        // $jobs = $this->db->query('SELECT * FROM jobs WHERE id = :id', $params)->fetch();
+        $jobs = $this->db->query('SELECT * FROM jobs WHERE id = :id', $params)->fetch();
         // Check if jobs exists
         // if (!$jobs) {
         //     ErrorController::notFound('Jobs not found');
@@ -64,9 +64,30 @@ class JobsController
 
         // inspectAndDie($jobs);
 
-        loadView('jobs/show');
+        loadView('jobs/show', [
+            'jobs' => $jobs
+        ]);
     }
 
+    public function search()
+    {
+        $keywords = isset($_GET['keywords']) ? trim($_GET['keywords']) : '';
+    
+        $query = "SELECT * FROM jobs WHERE (title LIKE :keywords)";
+
+    
+        $params = [
+            'keywords' => "%{$keywords}%"
+        ];
+    
+        $jobs = $this->db->query($query, $params)->fetchAll();
+
+        inspectAndDie($jobs);
+        loadView('/jobs/index', [
+            'listings' => $jobs,
+            'keywords' => $keywords,
+          ]);
+    }
 
 
 }
