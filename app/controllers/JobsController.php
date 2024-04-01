@@ -21,16 +21,14 @@ class JobsController
      */
     public function index()
     {
-
-
         $jobs = $this->db->query('SELECT * FROM jobs')->fetchAll();
-        inspectAndDie($jobs);
+
+            // inspectAndDie($jobs);
 
 
-        // loadView('home');
-        // loadView('jobs/index', [
-        //     'jobss' => $jobss
-        // ]);
+        loadView('jobs/index', [
+            'jobs' => $jobs
+        ]);
     }
 
     /*
@@ -50,25 +48,23 @@ class JobsController
      */
     public function show($params)
     {
-        $id = $params['id'] ?? '';
+        // $id = $params['id'] ?? '';
         // inspectAndDie($id);
 
-        $params = [
-            'id' => $id,
-        ];
+        // $params = [
+        //     'id' => $id,
+        // ];
 
-        $jobs = $this->db->query('SELECT * FROM jobs WHERE id = :id', $params)->fetch();
+        // $jobs = $this->db->query('SELECT * FROM jobs WHERE id = :id', $params)->fetch();
         // Check if jobs exists
-        if (!$jobs) {
-            ErrorController::notFound('Jobs not found');
-            return;
-        }
+        // if (!$jobs) {
+        //     ErrorController::notFound('Jobs not found');
+        //     return;
+        // }
 
-        inspectAndDie($jobs);
+        // inspectAndDie($jobs);
 
-        loadView('jobs/show', [
-            'jobs' => $jobs
-        ]);
+        loadView('jobs/show');
     }
 
 

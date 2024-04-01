@@ -12,6 +12,7 @@ $router->get('/', 'HomeController@index');
 
 $router->get('/jobs', 'JobsController@index');
 $router->get('/jobs/{id}', 'JobsController@show');
+$router->get('/job', 'JobsController@show');
 
 
 /**

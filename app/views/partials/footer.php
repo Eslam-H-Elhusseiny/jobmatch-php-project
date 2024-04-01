@@ -4,8 +4,7 @@
         <div class="about-us">
           <h3>About Us</h3>
           <p>
-            The exciting contemporary brand MENM is known for its attention to
-            detail and premium graphics.
+            JobMatch is an innovative online platform designed to streamline the job search process for both employers and job seekers. With its user-friendly interface and advanced algorithms.
           </p>
           <div class="social">
             <a href="https://www.facebook.com"
