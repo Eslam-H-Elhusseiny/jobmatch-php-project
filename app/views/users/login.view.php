@@ -17,16 +17,16 @@
     <link rel="stylesheet" href="/css/style.css?<?= time() ?>">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
-    <title>Job Match| Login</title>
+    <title>Job Match | Login</title>
   </head>
 
-<body class="bg-light">
-  <head class="text-dark bg-danger">
+<body class="">
+  <div class="nav">
     <?php loadPartial('navbar'); ?>
-  </head>
+  </div>
 
-<div class="container my-4">
-    <form method="POST" action="/auth/user/login" class="bg-white w-50 mx-auto p-4 rounded shadow-sm border-1 text-capitalize text-center">
+<div class="container my-5 py-5">
+    <form method="POST" action="/auth/user/login" class="bg-white w-50 mx-auto p-4 rounded shadow border-1 text-capitalize text-center">
     <h2 class="text-4xl text-center font-bold mb-4">Login</h2>
     <div class="selection d-flex align-items-center justify-content-center">
         <h5 class="mx-2"><a href="/auth/user/login" class="createOption active">Personnal Account</a></h5>
