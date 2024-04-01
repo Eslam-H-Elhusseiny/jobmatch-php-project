@@ -1,4 +1,3 @@
-
 <footer>
       <div class="container">
         <div class="about-us">
