@@ -19,49 +19,49 @@
       <div class="row">
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="fname" type="text" name="fname" placeholder="First Name" class="form-control w-100 py-1" value="<?= $user['fname'] ?? '' ?>" />
+            <input id="fname" type="text" name="fname" placeholder="First Name" class="form-control w-100 " value="<?= $user['fname'] ?? '' ?>" />
             <label class="" for="fname">First Name</label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="lname" type="text" name="lname" placeholder="last Name" class="form-control w-100 py-1" value="<?= $user['lname'] ?? '' ?>" />
+            <input id="lname" type="text" name="lname" placeholder="last Name" class="form-control w-100 " value="<?= $user['lname'] ?? '' ?>" />
             <label class="" for="lname">last Name</label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="email" type="text" name="email" placeholder="email " class="form-control w-100 py-1" value="<?= $user['email'] ?? '' ?>" />
+            <input id="email" type="text" name="email" placeholder="email " class="form-control w-100 " value="<?= $user['email'] ?? '' ?>" />
             <label class="" for="email">email </label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="phone_num" type="text" name="phone_num" placeholder="phone number" class="form-control w-100 py-1" value="<?= $user['phone_num'] ?? '' ?>" />
+            <input id="phone_num" type="text" name="phone_num" placeholder="phone number" class="form-control w-100 " value="<?= $user['phone_num'] ?? '' ?>" />
             <label class="" for="phone_num">phone number</label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="title" type="text" name="title" placeholder="title" class="form-control w-100 py-1" value="<?= $user['title'] ?? '' ?>" />
+            <input id="title" type="text" name="title" placeholder="title" class="form-control w-100 " value="<?= $user['title'] ?? '' ?>" />
             <label class="" for="title">title</label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="bio" type="text" name="bio" placeholder="bio" class="form-control w-100 py-1" value="<?= $user['bio'] ?? '' ?>" />
+            <input id="bio" type="text" name="bio" placeholder="bio" class="form-control w-100 " value="<?= $user['bio'] ?? '' ?>" />
             <label class="" for="bio">bio</label class="">
           </div>
         </div>
         <div class="col-12 col-md-3">
           <div class="form-floating mb-4">
-            <input id="experience" type="number" name="experience" placeholder="experience" class="form-control w-100 py-1" value="<?= $user['experience'] ?? '' ?>" />
+            <input id="experience" type="number" name="experience" placeholder="experience" class="form-control w-100 " value="<?= $user['experience'] ?? '' ?>" />
             <label class="" for="experience">experience</label class="">
           </div>
         </div>
         <div class="col-12 col-md-3">
           <div class="form-floating mb-4">
-            <select id="gender" name="gender" class="form-control w-100 py-1">
+            <select id="gender" name="gender" class="form-control w-100 ">
               <option value="" <?= isset($user['gender']) && $user['gender'] === '' ? 'selected' : '' ?> disabled>Select gender</option>
               <option value="male" <?= isset($user['gender']) && $user['gender'] === 'male' ? 'selected' : '' ?>>Male</option>
               <option value="female" <?= isset($user['gender']) && $user['gender'] === 'female' ? 'selected' : '' ?>>Female</option>
@@ -71,30 +71,30 @@
         <div class="col-12 col-md-6">
           <div class="mb-4 d-flex align-items-center">
             <label class="pb-3 w-auto" for="bdate">Birth Date</label>
-            <input id="bdate" type="date" name="bdate" placeholder="Birth Date" class="form-control w-100 py-1 flex-grow-1" value="<?= $user['bdate'] ?? '' ?>" max="<?= date('Y-m-d') ?>" />
+            <input id="bdate" type="date" name="bdate" placeholder="Birth Date" class="form-control w-100  flex-grow-1" value="<?= $user['bdate'] ?? '' ?>" max="<?= date('Y-m-d') ?>" />
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="country" type="text" name="country" placeholder="country" class="form-control w-100 py-1" value="<?= $user['country'] ?? '' ?>" />
+            <input id="country" type="text" name="country" placeholder="country" class="form-control w-100 " value="<?= $user['country'] ?? '' ?>" />
             <label class="" for="country">country</label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="city" type="text" name="city" placeholder="city" class="form-control w-100 py-1" value="<?= $user['city'] ?? '' ?>" />
+            <input id="city" type="text" name="city" placeholder="city" class="form-control w-100 " value="<?= $user['city'] ?? '' ?>" />
             <label class="" for="city">city</label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="password" type="password" name="password" placeholder="password" class="form-control w-100 py-1" value="<?= $user['password'] ?? '' ?>" />
+            <input id="password" type="password" name="password" placeholder="password" class="form-control w-100 " value="<?= $user['password'] ?? '' ?>" />
             <label class="text-tertiary" for="password">password</label class="">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-floating mb-4">
-            <input id="password_confirmation" type="password" name="password_confirmation" placeholder="password_confirmation" class="form-control w-100 py-1" value="<?= $user['password_confirmation'] ?? '' ?>" />
+            <input id="password_confirmation" type="password" name="password_confirmation" placeholder="password_confirmation" class="form-control w-100 " value="<?= $user['password_confirmation'] ?? '' ?>" />
             <label class="text-tertiary" for="password_confirmation">password confirmation</label class="">
           </div>
         </div>

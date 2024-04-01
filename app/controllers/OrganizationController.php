@@ -124,11 +124,11 @@ class OrganizationController
 
     $this->db->query('INSERT INTO organizations (org_name, email, website, linkedin, description, industry, country, city, founded, password) VALUES (:org_name, :email, :website, :linkedin, :description, :industry, :country, :city, :founded, :password)', $params);
     // Get new organization ID
-    $userId = $this->db->conn->lastInsertId();
+    $orgId = $this->db->conn->lastInsertId();
 
     // Set organization session
     Session::set('organization', [
-        'id' => $userId,
+        'id' => $orgId,
         'org_name' => $org_name,
         'country' => $country,
         'city' => $city,
