@@ -23,7 +23,7 @@ class OrganizationController
    */
   public function login()
   {
-    loadView('users/login');
+    loadView('organizations/login');
   }
 
   /**
@@ -33,7 +33,7 @@ class OrganizationController
    */
   public function create()
   {
-    loadView('users/createOrganization');
+    loadView('organizations/createOrganization');
   }
   /**
    * Store organization in database
@@ -76,7 +76,7 @@ class OrganizationController
     }
 
     if (!empty($errors)) {
-      loadView('users/createOrganization', [
+      loadView('organizations/createOrganization', [
         'errors' => $errors,
         'organization' => [
             'org_name' => $org_name,
@@ -102,7 +102,7 @@ class OrganizationController
 
     if ($organization) {
       $errors['email'] = 'That email already exists';
-      loadView('users/createOrganization', [
+      loadView('organizations/createOrganization', [
         'errors' => $errors
       ]);
       exit;
@@ -181,7 +181,7 @@ class OrganizationController
 
     // Check for errors
     if (!empty($errors)) {
-      loadView('users/login', [
+      loadView('organizations/login', [
         'errors' => $errors
       ]);
       exit;
@@ -196,7 +196,7 @@ class OrganizationController
 
     if (!$organization) {
       $errors['email'] = 'Incorrect credentials';
-      loadView('users/login', [
+      loadView('organizations/login', [
         'errors' => $errors
       ]);
       exit;
@@ -205,7 +205,7 @@ class OrganizationController
     // Check if password is correct
     if (!password_verify($password, $organization->password)) {
       $errors['email'] = 'Incorrect credentials';
-      loadView('users/login', [
+      loadView('organizations/login', [
         'errors' => $errors
       ]);
       exit;

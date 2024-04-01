@@ -431,7 +431,7 @@ footer {
 
 /*  *ANCHOR - REGISRERATION FORM */
 .createOption.active{
-  color: var(--color-accent-washed);
+  color: #1877f2;
   text-decoration: underline;
 }
 /* *STUB - End Register */

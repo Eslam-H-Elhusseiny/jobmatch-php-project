@@ -42,94 +42,79 @@ class UserController
    */
   public function store()
   {
-    // inspectAndDie('Store');
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $phone_num = $_POST['phone_num'];
-    $title  = $_POST['title'];
-    $gender  = $_POST['gender'];
-    $bdate  = $_POST['bdate'];
-    $country = $_POST['country'];
-    $experience  = $_POST['experience'];
-    $email = $_POST['email'];
-    $city = $_POST['city'];
-    $bio = $_POST['bio'];
-    $password = $_POST['password'];
-    $passwordConfirmation = $_POST['password_confirmation'];
-
+    // Required fields validation
+    $requiredFields = ['fname', 'lname', 'phone_num', 'title', 'gender', 'bdate', 'country', 'experience', 'email', 'city', 'bio', 'password', 'password_confirmation'];
     $errors = [];
 
-    // Validation
-    if (!Validation::email($email)) {
+    foreach ($requiredFields as $field) {
+      if (empty($_POST[$field])) {
+        $errors[$field] = ucfirst($field) . ' is required';
+      }
+    }
+
+    // Additional validations
+    if (!Validation::email($_POST['email'])) {
       $errors['email'] = 'Please enter a valid email address';
     }
 
-    if (!Validation::string($fname, 2, 50)) {
-      $errors['fname'] = 'first name must be between 2 and 50 characters';
+    if (!Validation::string($_POST['fname'], 2, 50)) {
+      $errors['fname'] = 'First name must be between 2 and 50 characters';
     }
 
-    if (!Validation::string($lname, 2, 50)) {
-      $errors['lname'] = 'last name must be between 2 and 50 characters';
+    if (!Validation::string($_POST['lname'], 2, 50)) {
+      $errors['lname'] = 'Last name must be between 2 and 50 characters';
     }
 
-
-    if (!Validation::string($password, 6, 50)) {
+    if (!Validation::string($_POST['password'], 6, 50)) {
       $errors['password'] = 'Password must be at least 6 characters';
     }
 
-    if (!Validation::match($password, $passwordConfirmation)) {
+    if (!Validation::match($_POST['password'], $_POST['password_confirmation'])) {
       $errors['password_confirmation'] = 'Passwords do not match';
     }
 
+    // If there are validation errors, load the view with errors
     if (!empty($errors)) {
       loadView('users/createUser', [
         'errors' => $errors,
-        'user' => [
-          'fname' => $fname,
-          'lname' => $lname,
-          'email' => $email,
-          'phone_num' => $phone_num,
-          'bio' => $bio,
-          'bdate' => $bdate,
-          'title' => $title,
-          'experience' => $experience,
-          'gender' => $gender,
-          'country' => $country,
-          'city' => $city,
-            ]
+        'user' => $_POST
       ]);
       exit;
     }
 
-    // Check if email exists
+    // Check if email or phone number already exists
     $params = [
-      'email' => $email
+      'email' => $_POST['email'],
+      'phone_num' => $_POST['phone_num']
     ];
 
-    $user = $this->db->query('SELECT * FROM applicants WHERE email = :email', $params)->fetch();
+    $existingUser = $this->db->query('SELECT * FROM applicants WHERE email = :email OR phone_num = :phone_num', $params)->fetch();
 
-    if ($user) {
-      $errors['email'] = 'That email already exists';
+    if ($existingUser) {
+      $errors['email'] = $existingUser->email === $_POST['email'] ? 'That email already exists' : '';
+      $errors['phone_num'] = $existingUser->phone_num === $_POST['phone_num'] ? 'Phone number already exists' : '';
+
       loadView('users/createUser', [
-        'errors' => $errors
+        'errors' => $errors,
+        'user' => $_POST
       ]);
       exit;
     }
-
+    
     // Create user account
     $params = [
-      'fname' => $fname,
-      'lname' => $lname,
-      'email' => $email,
-      'phone_num' => $phone_num,
-      'bio' => $bio,
-      'bdate' => $bdate,
-      'title' => $title,
-      'experience' => $experience,
-      'gender' => $gender,
-      'country' => $country,
-      'city' => $city,
-      'password' => password_hash($password, PASSWORD_DEFAULT)
+      'fname' => $_POST['fname'],
+      'lname' => $_POST['lname'],
+      'email' => $_POST['email'],
+      'phone_num' => $_POST['phone_num'],
+      'bio' => $_POST['bio'],
+      'bdate' => $_POST['bdate'],
+      'title' => $_POST['title'],
+      'experience' => $_POST['experience'],
+      'gender' => $_POST['gender'],
+      'country' => $_POST['country'],
+      'city' => $_POST['city'],
+      'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
     ];
 
     $this->db->query('INSERT INTO applicants (fname, lname, email, phone_num, bio, bdate, title, experience, gender, country, city, password) VALUES (:fname, :lname, :email, :phone_num, :bio, :bdate, :title, :experience, :gender, :country, :city, :password)', $params);
@@ -140,19 +125,20 @@ class UserController
     // Set user session
     Session::set('user', [
       'id' => $userId,
-      'fname' => $fname,
-      'lname' => $lname,
-      'email' => $email,
-      'phone_num' => $phone_num,
-      'bio' => $bio,
-      'bdate' => $bdate,
-      'title' => $title,
-      'experience' => $experience,
-      'gender' => $gender,
-      'country' => $country,
-      'city' => $city,
-]);
+      'fname' => $_POST['fname'],
+      'lname' => $_POST['lname'],
+      'email' => $_POST['email'],
+      'phone_num' => $_POST['phone_num'],
+      'bio' => $_POST['bio'],
+      'bdate' => $_POST['bdate'],
+      'title' => $_POST['title'],
+      'experience' => $_POST['experience'],
+      'gender' => $_POST['gender'],
+      'country' => $_POST['country'],
+      'city' => $_POST['city'],
+    ]);
 
+    // Redirect to home page after successful registration
     redirect('/');
   }
 

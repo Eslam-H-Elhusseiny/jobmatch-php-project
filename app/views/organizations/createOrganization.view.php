@@ -92,7 +92,7 @@
             </div>
             <p class="mt-4 text-gray-500">
                 Already have an account?
-                <a class="text-primary text-underline" href="/auth/login">Login</a>
+                <a class="text-primary text-underline" href="/auth/organization/login">Login</a>
             </p>
         </form>
     </div>

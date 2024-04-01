@@ -6,11 +6,11 @@
   </head>
 
 <div class="container my-4">
-    <form method="POST" action="/auth/user/login" class="bg-white w-50 mx-auto p-4 rounded shadow-sm border-1 text-capitalize text-center">
+    <form method="POST" action="/auth/organization/login" class="bg-white w-50 mx-auto p-4 rounded shadow-sm border-1 text-capitalize text-center">
     <h2 class="text-4xl text-center font-bold mb-4">Login</h2>
     <div class="selection d-flex align-items-center justify-content-center">
-        <h5 class="mx-2"><a href="/auth/user/login" class="createOption active">Personnal Account</a></h5>
-        <h5 class="mx-2"><a href="/auth/organization/login" class="createOption ">Organization</a></h5>
+        <h5 class="mx-2"><a href="/auth/user/login" class="createOption">Personnal Account</a></h5>
+        <h5 class="mx-2"><a href="/auth/organization/login" class="createOption active">Organization</a></h5>
       </div>
       <hr>
 
@@ -29,7 +29,7 @@
 
       <p class="mt-4 text-gray-500">
         Don't have an account?
-        <a class="text-primary" href="/auth/user/register">Register</a>
+        <a class="text-primary" href="/auth/organization/register">Register</a>
       </p>
     </form>
   </div>

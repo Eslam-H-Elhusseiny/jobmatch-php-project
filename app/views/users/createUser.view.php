@@ -1,7 +1,8 @@
 <?= loadPartial('head') ?>
 
 <body class="bg-light">
-  <head >
+
+  <head>
     <?php loadPartial('navbar'); ?>
   </head>
   <div class="container my-4">
@@ -61,7 +62,7 @@
         <div class="col-12 col-md-3">
           <div class="form-floating mb-4">
             <select id="gender" name="gender" class="form-control w-100 py-1">
-              <option value="" disabled selected>Select gender</option>
+              <option value="" <?= isset($user['gender']) && $user['gender'] === '' ? 'selected' : '' ?> disabled>Select gender</option>
               <option value="male" <?= isset($user['gender']) && $user['gender'] === 'male' ? 'selected' : '' ?>>Male</option>
               <option value="female" <?= isset($user['gender']) && $user['gender'] === 'female' ? 'selected' : '' ?>>Female</option>
             </select>
@@ -105,7 +106,7 @@
       </div>
       <p class="mt-4 text-gray-500">
         Already have an account?
-        <a class="text-primary text-underline" href="/auth/login">Login</a>
+        <a class="text-primary text-underline" href="/auth/user/login">Login</a>
       </p>
     </form>
   </div>
