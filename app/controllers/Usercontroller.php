@@ -100,7 +100,7 @@ class UserController
       ]);
       exit;
     }
-    
+
     // Create user account
     $params = [
       'fname' => $_POST['fname'],
@@ -137,7 +137,7 @@ class UserController
       'country' => $_POST['country'],
       'city' => $_POST['city'],
     ]);
-
+    // inspectAndDie(Session::get('user'));
     // Redirect to home page after successful registration
     redirect('/');
   }

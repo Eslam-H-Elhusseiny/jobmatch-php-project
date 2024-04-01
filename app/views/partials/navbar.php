@@ -13,10 +13,10 @@ use Framework\Session;
         <li><a href="#">Find Jobs</a></li>
         <li><a href="#">About Us</a></li>
       </ul>
-      <?php if (Session::has('user')) : ?>
-        <div class="gap-4 d-flex justify-content-between align-items-center">
-          <div class="text-blue-500">
-            Welcome <?= Session::get('user')['name'] ?>
+        <?php if (Session::has('user')) : ?>
+          <div class="gap-4 d-flex justify-content-between align-items-center">
+          <div class="text-light text-decoration-underline">
+            Welcome <?= Session::get('user', '')['fname'] ?> 
           </div>
           <form method="POST" action="/auth/logout">
             <button type="submit" class="btn btn-outline-light">Logout</button>
@@ -24,9 +24,6 @@ use Framework\Session;
         </div>
       <?php else : ?>
         <ul class="mb-0">
-          <!-- <li>
-            <a href="/auth/user/login" class="text-white hover:underline">Login</a>
-          </li> -->
           <li>
             <a href="/auth/user/register" class="text-white hover:underline">Register as User</a>
           </li>
