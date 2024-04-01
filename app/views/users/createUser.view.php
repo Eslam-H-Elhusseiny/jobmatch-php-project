@@ -22,9 +22,11 @@
 
 <body class="bg-light">
 
-  <head>
+  <!-- Nav Bar -->
+  <div class="nav">
     <?php loadPartial('navbar'); ?>
-  </head>
+  </div>
+  
   <div class="container my-4">
     <form method="POST" action="/auth/user/register" class="bg-white w-75 mx-auto p-4 rounded shadow-sm border-1 text-capitalize">
       <h2 class="text-4xl text-center font-bold mb-4">Registeration Form</h2>

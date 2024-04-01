@@ -31,7 +31,7 @@
           </form>
         </div>
       <?php else : ?>
-        <ul class="mb-0">
+        <ul class="">
           <li>
             <a href="/auth/user/register" class="text-white hover:underline">Register as User</a>
           </li>
