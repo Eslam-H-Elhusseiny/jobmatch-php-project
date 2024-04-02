@@ -21,6 +21,7 @@ class JobsController
      */
     public function index()
     {
+        // inspectAndDie($_GET);
         $keywords = isset($_GET['keywords']) ? trim($_GET['keywords']) : '';
         $job_type = isset($_GET['job_type']) ? trim($_GET['job_type']) : '';
         $job_model = isset($_GET['job_model']) ? trim($_GET['job_model']) : '';
@@ -30,7 +31,8 @@ class JobsController
         // $current_date = isset($_GET['current_date']) ? trim($_GET['current_date']) : 'CURRENT_TIMESTAMP';
 
 
-        $query = "SELECT * FROM jobs WHERE (title LIKE :keywords OR description LIKE :keywords)AND (job_type LIKE :job_type) AND(job_model LIKE :job_model)   AND(job_exp LIKE :job_exp) AND (is_open Like :is_open) AND(expiry_date >CURRENT_TIMESTAMP)";
+        $query = "SELECT * FROM jobs WHERE (title LIKE :keywords OR description LIKE :keywords)AND (job_type LIKE :job_type) AND(job_model LIKE :job_model)   AND(job_exp LIKE :job_exp) AND (is_open Like :is_open)";
+        //  AND(expiry_date >CURRENT_TIMESTAMP)";
 
         $params = [
             'keywords' => "%{$keywords}%",
@@ -44,7 +46,7 @@ class JobsController
 
         inspectAndDie($jobs);
 
-
+        
 
 
 
@@ -92,7 +94,7 @@ class JobsController
     public function appliedJobs($params)
     {
         $id = $params['id'] ?? '';
-        $status = isset($_GET['status']) ? trim($_GET['status']) : 'pending';
+        $status = isset($_GET['status']) ? trim($_GET['status']) : '';
 
 
         $params = [
