@@ -27,4 +27,8 @@ class HomeController
       'jobs' => $jobs
     ]);
   }
+  public function about()
+  {
+    loadView('about');
+  }
 }

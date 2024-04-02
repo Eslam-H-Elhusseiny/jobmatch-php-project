@@ -10,7 +10,7 @@
     <ul class="mb-0">
       <li><a href="/">Home</a></li>
       <li><a href="/jobs">Find Jobs</a></li>
-      <li><a href="/about-us">About Us</a></li>
+      <li><a href="/about">About Us</a></li>
     </ul>
     <?php if (Session::has('user')) : ?>
         <div class="welcome-container">
