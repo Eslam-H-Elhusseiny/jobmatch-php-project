@@ -86,8 +86,8 @@
         </div>
         <div class="col-12 col-md-6">
           <div class="mb-4 d-flex align-items-center">
-            <label class="pb-3 w-50" for="bdate">Birth Date</label>
-            <input id="bdate" type="date" name="bdate" placeholder="Birth Date" class="form-control w-100  flex-grow-1" value="<?= $user['bdate'] ?? '' ?>" max="<?= date('Y-m-d') ?>" />
+            <label class="ms-1 w-50" for="bdate">Birth Date</label>
+            <input id="bdate" type="date" name="bdate" class="form-control w-100  flex-grow-1" value="<?= $user['bdate'] ?? '' ?>" max="<?= date('Y-m-d') ?>" />
           </div>
         </div>
         <div class="col-12 col-md-3">
