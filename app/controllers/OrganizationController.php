@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Framework\Database;
 use Framework\Validation;
 use Framework\Session;
+use PDO;
 
 class OrganizationController
 {
@@ -226,5 +227,43 @@ class OrganizationController
   ]);
   // inspectAndDie($_SESSION['']);
     redirect('/');
+  }
+
+    /**
+   * Show the Profile
+   * 
+   * @return void
+   */
+  public function profile()
+  {
+    $orgData =  Session::get('organization');
+
+    // inspectAndDie(isset($userData['bio']));
+
+    loadView('profiles/organization', [
+      'user' => $orgData,
+    ]);
+  }
+
+    /**
+   * Show the Org Info
+   * 
+   * @return void
+   */
+  public function info($params)
+  {
+    $id = $params['id'] ?? '';
+
+    $params = [
+      'id' => $id,
+    ];
+    
+    $orgData = $this->db->query('SELECT * FROM organizations WHERE id = :id', $params)->fetch(PDO::FETCH_ASSOC);
+
+    // inspectAndDie(isset($userData['bio']));
+
+    loadView('profiles/organization', [
+      'user' => $orgData,
+    ]);
   }
 }

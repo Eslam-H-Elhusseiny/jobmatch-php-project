@@ -15,6 +15,8 @@ $router->post('/auth/user/login', 'UserController@authenticate', ['guest']);
 $router->post('/auth/organization/login', 'OrganizationController@authenticate', ['guest']);
 
 $router->get('/auth/user/profile', 'UserController@profile', ['auth']);
+$router->get('/auth/organization/profile', 'OrganizationController@profile', ['auth']);
+$router->get('/organizations/info/{id}', 'OrganizationController@info');
 
 $router->get('/jobs', 'JobsController@index');
 $router->get('/jobs/search', 'JobsController@search');

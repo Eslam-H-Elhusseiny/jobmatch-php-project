@@ -245,16 +245,6 @@ class UserController
       $diff = $today->diff(new DateTime($birthdate));
       return $diff->y;
     };
-    // inspectAndDie(Session::get('user'));
-    // $email = $_POST['email'];
-
-    // $params = [
-    //   'email' => $email,
-    // ];
-
-    // $query = 'SELECT * FROM applicants where email = :email';
-
-    // $userData =  $this->db->query($query, $params)->fetchAll();
 
     $userData =  Session::get('user');
 

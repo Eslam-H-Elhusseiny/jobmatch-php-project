@@ -15,7 +15,7 @@
     <?php if (Session::has('user')) : ?>
         <div class="welcome-container">
           <div class="welcome-text">
-            Welcome, <?= Session::get('user')['fname'] ?>
+            Welcome, <a href="/auth/user/profile" style="text-decoration: underline;"><?= Session::get('user')['fname'] ?></a> 
           </div>
           <form method="POST" action="/auth/logout">
             <button type="submit" class="btn-logout">Logout</button>
@@ -24,7 +24,7 @@
       <?php elseif (Session::has('organization')) : ?>
         <div class="welcome-container">
           <div class="welcome-text">
-            Welcome, <?= Session::get('organization')['org_name'] ?>
+            Welcome, <a href="/auth/organization/profile" style="text-decoration: underline;"><?= Session::get('organization')['org_name'] ?></a>
           </div>
           <form method="POST" action="/auth/logout">
             <button type="submit" class="btn-logout">Logout</button>
