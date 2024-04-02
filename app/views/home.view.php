@@ -6,7 +6,8 @@
     <header>
 
     <?php   loadPartial('navbar'); ?>
-
+    
+    <a href="../views/profiles/profileApp.view.php">Profile</a>
       <div class="search">
         <h1 class="search-heading">The Easiest Way to Get Your New Job</h1>
         <form action="" class="search-bar">

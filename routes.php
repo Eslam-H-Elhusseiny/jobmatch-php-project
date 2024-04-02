@@ -18,3 +18,5 @@ $router->get('/jobs', 'JobsController@index');
 $router->get('/jobs/search', 'JobsController@search');
 $router->get('/jobs/{id}', 'JobsController@show');
 $router->get('/user/{id}/jobs', 'JobsController@appliedJobs');
+
+$router->get('/profile/profileApp','');

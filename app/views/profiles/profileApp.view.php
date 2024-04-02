@@ -13,7 +13,8 @@
   <div class="nav">
     <?php loadPartial('navbar'); ?>
   </div>
-
+  <!-- $userId = $_SESSION['user']['id']; -->
+  
   <!-- Start top section -->
   <section class="profile-header">
     <div class="profile-img">
