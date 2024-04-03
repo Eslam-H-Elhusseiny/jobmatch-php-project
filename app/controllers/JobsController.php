@@ -237,4 +237,127 @@ class JobsController
     //         'job_model' => $job_model,
     //     ]);
     // }
+
+    // public function jobApplicants($params)
+    // {
+    //     // inspectAndDie($params);
+
+    //     $id = $params['id'] ?? '';
+    //     // inspectAndDie(is_nan($id));
+    //     if (!is_numeric($id)) {
+    //         ErrorController::notFound('Please enter a valid id');
+
+    //     }
+    //     $query = ("select * from app_job where job_id=$id");
+    //     $applied_applicants = $this->db->query($query)->fetchAll();
+
+    //     $response = json_encode($applied_applicants);
+
+    //     // Set the Content-Type header to application/json
+    //     header('Content-Type: application/json');
+
+    //     // Return the JSON response
+    //     echo $response;
+    //     // inspectAndDie($applied_applicants);
+
+    // }
+
+    public function apply($params)
+    {
+        $job_id = $params['id'];
+        $app_id = $_SESSION['user']['id'];
+
+
+        loadView("jobs/apply", [
+            'app_id' => $app_id,
+            'job_id' => $job_id
+        ]);
+
+    }
+
+
+
+    public function jobOrganization()
+    {
+        // inspectAndDie($params);
+        $org_id = $_SESSION['organization']['id'];
+
+        $query = ("select * from jobs where org_id=$org_id");
+        $applied_applicants = $this->db->query($query)->fetchAll();
+
+        inspectAndDie($applied_applicants);
+
+    }
+
+
+
+
+    public function updateApplicationStatus()
+    {
+        // inspectAndDie($params);
+        $org_id = $_SESSION['organization']['id'];
+
+        $query = ("select * from jobs where org_id=$org_id");
+        $applied_applicants = $this->db->query($query)->fetchAll();
+
+        inspectAndDie($applied_applicants);
+
+    }
+
+
+    public function application()
+    {
+
+
+        $app_id = $_POST['app_id'];
+        $job_id = $_POST['job_id'];
+        $experience = $_POST['experience'];
+        $cover_letter = $_POST['cover_letter'];
+        // inspectAndDie($_FILES['resume']);
+        // inspectAndDie($_POST);
+        if ($_FILES['resume']['error'] === UPLOAD_ERR_OK) {
+            $file_name = $_FILES['resume']['name'];
+            $file_size = $_FILES['resume']['size'];
+            $file_tmp = $_FILES['resume']['tmp_name'];
+            $file_type = $_FILES['resume']['type'];
+            $ext = explode('.', $file_name);
+            $file_ext = strtolower(end($ext));
+
+            $allowed_extensions = array("pdf");
+
+            if (in_array($file_ext, $allowed_extensions)) {
+                $file_path = $_SERVER['DOCUMENT_ROOT'] . "/cv/" . $_POST['app_id'] . "-" . $_POST['job_id'] . "-" . $file_name;
+                // inspectAndDie($file_path);
+
+                move_uploaded_file($file_tmp, $file_path);
+                $file_path = "/public/cv/" . $_POST['app_id'] . "-" . $_POST['job_id'] . "-" . $file_name;
+
+            } else {
+                ErrorController::notFound('you are not authorized');
+            }
+        } else {
+            ErrorController::notFound('you are not authorized');
+        }
+        $params = [
+            'app_id' => $app_id,
+            'job_id' => $job_id,
+            'status' => 'applied',
+            'cv' => $file_path,
+            'experience' => $experience,
+            'cover_letter' => $cover_letter,
+
+        ];
+
+        $this->db->query('INSERT INTO app_job (app_id, job_id, status, cv, experience, cover_letter) VALUES (:app_id, :job_id, :status, :cv, :experience, :cover_letter)', $params);
+        redirect('/');
+
+        // return;
+
+
+
+    }
+
+
+
+
 }

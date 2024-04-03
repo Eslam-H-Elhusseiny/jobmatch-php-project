@@ -25,4 +25,13 @@ $router->get('/jobs', 'JobsController@index');
 $router->get('/jobs/search', 'JobsController@index');
 $router->get('/jobs/{id}', 'JobsController@show');
 $router->get('/jobs/{id}/list', 'JobsController@list');
+// $router->get('/jobs/{id}/applicants', 'JobsController@jobApplicants');
+
+$router->post('/jobs/apply', 'JobsController@application');
+$router->get('/jobs/{id}/apply', 'JobsController@apply');
+
+
+// return jobs posted by an organization
+// lsa m5lso4
+$router->get('/org/jobs', 'JobsController@jobOrganization');
 $router->get('/user/{id}/jobs', 'JobsController@appliedJobs');

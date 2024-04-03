@@ -63,7 +63,7 @@
         </div>
         <div class="right">
           <span class="expire">Application ends: <span class="date">May 19, 2026</span></span>
-          <form action="">
+          <form action="/jobs/<?php echo $jobs->id?>/apply">
             <button class="btn-apply">Apply Now</button>
             <a href="/jobs/<?= $jobs->id ?>/list" class="btn-apply" style="margin-top: 1rem;">List</a>
           </form>
