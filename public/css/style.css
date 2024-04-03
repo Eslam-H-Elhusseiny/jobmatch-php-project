@@ -231,6 +231,32 @@ section {
   flex: 5;
 }
 
+.filter_search {
+  padding-inline: 1rem;
+  margin-block: 1rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter_search input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 50rem;
+  border: 1px solid var(--color-border-light);
+  outline: none;
+}
+
+.filter_search > select {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.filter_search ~ .btn-apply {
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
 aside {
   background-color: var(--background-color-grey);
   padding: 1.5rem;
@@ -395,6 +421,42 @@ aside {
   border: none;
 }
 
+/* T a b l e */
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table th:first-of-type {
+  width: 4rem;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+table select {
+  padding: 0.5rem;
+}
 /* *SECTION - How It Works */
 
 .how-it-works {

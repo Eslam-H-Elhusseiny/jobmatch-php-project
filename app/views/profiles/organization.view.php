@@ -98,9 +98,9 @@ use Framework\Session;
     <section class="right-side">
       <div class="nav-profile">
         <ul>
-          <li onclick="tabs(0)" class="user-post active">Info</li>
-          <li onclick="tabs(1)" class="user-review">Skills</li>
-          <li onclick="tabs(2)" class="user-setting">Jobs</li>
+          <li onclick="tabs(0)" class="t user-post active">Info</li>
+          <li onclick="tabs(1)" class="t user-review">Skills</li>
+          <li onclick="tabs(2)" class="t user-setting">Jobs</li>
         </ul>
       </div>
 

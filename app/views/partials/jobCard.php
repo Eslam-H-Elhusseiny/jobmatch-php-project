@@ -31,7 +31,7 @@
     </div>
     <div class="job-location">
       <i class="fa fa-map-location-dot"></i>
-      <a href="/jobs/search?keywords=<?= $job->location ?>"><?= $job->location ?></a>
+      <a href="/jobs/search?location=<?= $job->location ?>"><?= $job->location ?></a>
     </div>
     <div class="job-salary">
       <i class="fa fa-money-bills"></i>
@@ -41,11 +41,11 @@
   </div>
   <div class="job-metas-bottom">
     <div class="">
-      <a class="job-type tag" href="/jobs/search?keywords=<?= $job->job_type ?>">
+      <a class="job-type tag" href="/jobs/search?job_type=<?= $job->job_type ?>">
         <?= ucwords($job->job_type,'-') ?>
       </a>
     </div>
-    <a href="/jobs/search?keywords=<?= $job->job_model ?>" class="urgent tag">
+    <a href="/jobs/search?job_model=<?= $job->job_model ?>" class="urgent tag">
       <?= ucfirst($job->job_model) ?>
     </a>
   </div>

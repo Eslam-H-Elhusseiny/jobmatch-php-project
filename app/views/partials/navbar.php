@@ -30,6 +30,7 @@
             <button type="submit" class="btn-logout">Logout</button>
           </form>
         </div>
+        <a href="/create/job" class="login-btn btn">Post A Job</a>
       <?php else : ?>
 
         <a href="/auth/user/login" class="login-btn btn" style="margin-left: 1rem;">Login</a>

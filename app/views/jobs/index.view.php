@@ -32,26 +32,42 @@
       <div class="container all-jobs">
         <aside>
           <h2>Filters</h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,
-            maxime?
-          </p>
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <select name="" id="">
-            <option value="">filter</option>
-            <option value="">filter</option>
-            <option value="">filter</option>
-            <option value="">filter</option>
-            <option value="">filter</option>
-          </select>
-          <input type="checkbox" />
-          <input type="checkbox" />
-          <input type="checkbox" />
-          <input type="checkbox" />
+          <form action="/jobs/search" method="GET" class="">
+            <div class="filter_search">
+              <label for="location">Locations:</label>
+              <input
+              id="location"
+              type="text"
+              name="location"
+              placeholder="Search Locations"
+              />
+            </div>
+
+            <div class="filter_search">
+              <label for="job_type">Job Type:</label>
+              <select name="job_type" id="job_filter">
+                <option selected disabled>Choose...</option>
+                <option value="full-time">Full-Time</option>
+                <option value="part-time">Part-Time</option>
+              </select>
+            </div>
+
+            <div class="filter_search">
+              <label for="job_model">Job Model:</label>
+              <select name="job_model" id="job_model">
+                <option selected disabled>Choose...</option>
+                <option value="onsite">Onsite</option>
+                <option value="remote">Remote</option>
+                <option value="hybrid">Hybrid</option>
+              </select>
+            </div>
+
+            <button class="btn-apply">
+                Filter
+            </button>
+          </form>
         </aside>
+
         <div class="job-flex">
           <?php foreach ($jobs as $job) : ?>
             <?php require "../app/views/partials/jobCard.php"; ?>

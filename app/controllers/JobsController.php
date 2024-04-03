@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use Framework\Database;
+use Framework\Validation;
+use PDO;
 
 class JobsController
 {
@@ -21,14 +23,36 @@ class JobsController
      */
     public function index()
     {
-        $jobs = $this->db->query('SELECT * FROM jobs')->fetchAll();
+        $keywords = isset($_GET['keywords']) ? trim($_GET['keywords']) : '';
+        $location = isset($_GET['location']) ? trim($_GET['location']) : '';
+        $job_type = isset($_GET['job_type']) ? trim($_GET['job_type']) : '';
+        $job_model = isset($_GET['job_model']) ? trim($_GET['job_model']) : '';
+        $job_exp = isset($_GET['job_exp']) ? trim($_GET['job_exp']) : '';
+        // $is_open = isset($_GET['is_open']) ? trim($_GET['is_open']) : '1';
 
-        // inspectAndDie($jobs);
+        // $current_date = isset($_GET['current_date']) ? trim($_GET['current_date']) : 'CURRENT_TIMESTAMP';
+
+
+        $query = "SELECT * FROM jobs WHERE (title LIKE :keywords OR description LIKE :keywords) AND (location LIKE :location) AND (job_type LIKE :job_type) AND (job_model LIKE :job_model)   AND(job_exp LIKE :job_exp) order by created_at desc";
+        //  AND ( is_open = :is_open)";
+        //  AND(expiry_date >CURRENT_TIMESTAMP)";
+
+        $params = [
+            'keywords' => "%{$keywords}%",
+            'location' => "%{$location}%",
+            'job_type' => "%{$job_type}%",
+            'job_model' => "%{$job_model}%",
+            'job_exp' => "%{$job_exp}%",
+            // 'is_open' => "%{$is_open}%",
+            // 'current_date' => "%{$current_date}%",
+        ];
+        $jobs = $this->db->query($query, $params)->fetchAll();
 
         loadView('jobs/index', [
             'jobs' => $jobs
         ]);
     }
+
 
     /*
      * Show the create jobs form
@@ -37,7 +61,107 @@ class JobsController
      */
     public function create()
     {
-        loadView('jobs/create');
+        loadView('/jobs/create');
+    }
+
+
+    public function store()
+    {
+
+        if (isset($_SESSION['organization'])) {
+
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $job_type = $_POST['job_type'];
+            $job_model = $_POST['job_model'];
+            $job_exp = $_POST['job_exp'];
+            $location = $_POST['location'];
+            $city = $_POST['city'];
+            $expiry_date = $_POST['expiry_date'];
+            $is_open = $_POST['is_open'];
+            $org_id = $_SESSION['organization']['id'];
+
+
+            $errors = [];
+
+            if (!Validation::string($title, 1, 100)) {
+                $errors['title'] = 'Please enter a valid title ';
+            }
+
+            if (!Validation::string($description, 2, 300)) {
+                $errors['description'] = 'Description must be between 2 and 50 characters';
+            }
+
+            if (!Validation::string($job_type, 1, 50)) {
+                $errors['job_type'] = 'Job type is required';
+            }
+
+            if (!Validation::string($job_model, 1, 50)) {
+                $errors['job_model'] = 'Job model is required';
+            }
+
+            if (!isset($job_exp)) {
+                $errors['job_exp'] = 'Experience must be a valid number';
+            }
+
+            if (!Validation::string($location, 1, 100)) {
+                $errors['location'] = 'Location is required';
+            }
+
+            if (!Validation::string($city, 1, 100)) {
+                $errors['city'] = 'City is required';
+            }
+
+            if (!isset($expiry_date)) {
+                $errors['expiry_date'] = 'Expiry date is not valid';
+            }
+
+            if (!isset($is_open)) {
+                $errors['is_open'] = 'Invalid value for is_open';
+            }
+
+            if (!empty($errors)) {
+
+                // Errors found, load view with errors and previously entered data
+                loadView('jobs/create', [
+                    'errors' => $errors,
+                    'job_data' => [
+                        'title' => $title,
+                        'description' => $description,
+                        'job_type' => $job_type,
+                        'job_model' => $job_model,
+                        'job_exp' => $job_exp,
+                        'location' => $location,
+                        'city' => $city,
+                        'expiry_date' => $expiry_date,
+                        'is_open' => $is_open
+                    ]
+                ]);
+                exit;
+            }
+
+
+
+            // Create job
+            $params = [
+                'title' => $title,
+                'description' => $description,
+                'job_type' => $job_type,
+                'job_model' => $job_model,
+                'job_exp' => $job_exp,
+                'location' => $location,
+                'city' => $city,
+                'expiry_date' => $expiry_date,
+                'is_open' => $is_open,
+                'org_id' => $org_id
+            ];
+
+            $this->db->query('INSERT INTO jobs (title, description, job_type, job_model, job_exp, location, city, expiry_date, is_open, org_id) VALUES (:title, :description, :job_type, :job_model, :job_exp, :location, :city, :expiry_date, :is_open, :org_id)', $params);
+            redirect('/jobs');
+        } else {
+            ErrorController::unauthorized('you are not authorized');
+            //     return;
+        }
     }
 
     /*
@@ -68,22 +192,49 @@ class JobsController
         ]);
     }
 
-    public function search()
+    public function list($params)
     {
-        $keywords = isset($_GET['keywords']) ? trim($_GET['keywords']) : '';
-
-        $query = "SELECT * FROM jobs WHERE title LIKE :keywords OR description LIKE :keywords OR location LIKE :keywords OR job_type LIKE :keywords OR job_model LIKE :keywords";
-
+        $id = $params['id'] ?? '';
+        // inspectAndDie($id);
 
         $params = [
-            'keywords' => "%{$keywords}%"
+            'id' => $id,
         ];
 
-        $jobs = $this->db->query($query, $params)->fetchAll();
-
-        // inspectAndDie($jobs);
-        loadView('/jobs/index', [
-            'jobs' => $jobs,
+        $list = $this->db->query('SELECT applicants.* 
+        FROM app_job JOIN applicants 
+        ON app_id = id WHERE job_id = :id  ', $params)->fetchAll();
+        // inspectAndDie($list);
+        loadView('jobs/applied', [
+            'list' => $list,
         ]);
     }
+    // public function search()
+    // {
+    //     $keywords = isset($_GET['keywords']) ? trim($_GET['keywords']) : '';
+    //     $location = isset($_GET['location']) ? trim($_GET['location']) : '';
+    //     $job_type = isset($_GET['job_type']) ? trim($_GET['job_type']) : '';
+    //     $job_model = isset($_GET['job_model']) ? trim($_GET['job_model']) : '';
+
+    //     $query = "SELECT * FROM jobs WHERE (title LIKE :keywords OR description LIKE :keywords) and (location LIKE :location) and (job_type LIKE :job_type) and (job_model LIKE :job_model)";
+
+
+    //     $params = [
+    //         'keywords' => "%{$keywords}%",
+    //         'location' => "%{$location}%",
+    //         'job_type' => "%{$job_type}%",
+    //         'job_model' => "%{$job_model}%",
+    //     ];
+
+    //     $jobs = $this->db->query($query, $params)->fetchAll();
+
+    //     // inspectAndDie($jobs);
+    //     loadView('/jobs/index', [
+    //         'jobs' => $jobs,
+    //         'keywords' => $keywords,
+    //         'location' => $location,
+    //         'job_type' => $job_type,
+    //         'job_model' => $job_model,
+    //     ]);
+    // }
 }
