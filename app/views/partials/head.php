@@ -17,5 +17,5 @@
 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
-    <title>Job | Catch The Opportunity</title>
+    <title>JobMatch | Catch The Opportunity</title>
   </head>

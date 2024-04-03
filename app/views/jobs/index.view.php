@@ -55,7 +55,7 @@
         <div class="job-flex">
           <?php foreach ($jobs as $job) : ?>
             <div class="job-card">
-              <a href="" class="btn-bookmark">
+              <a class="btn-bookmark">
                 <i class="fa fa-bookmark"></i>
               </a>
               <div class="company-logo">
@@ -87,23 +87,23 @@
                   </div>
                   <div class="job-location">
                     <i class="fa fa-map-location-dot"></i>
-                    <a href="">New York</a>
+                    <a href="/jobs/search?keywords=<?= $job->location ?>"><?= $job->location ?></a>
                   </div>
                   <div class="job-salary">
                     <i class="fa fa-money-bills"></i>
-                    <span class="suffix">$</span
-                    ><span class="price-text">150</span> -
-                    <span class="suffix">$</span
-                    ><span class="price-text">180</span> / week
+                    <span class="suffix">Experience ~ <?= $job->job_exp?> Years</span>
+
                   </div>
                 </div>
                 <div class="job-metas-bottom">
                   <div class="">
-                    <a class="job-type tag" href="">
+                    <a class="job-type tag" href="/jobs/search?keywords=<?= $job->job_type ?>">
                       <?= ucwords($job->job_type,'-') ?>
                     </a>
                   </div>
-                  <span class="urgent tag">Urgent</span>
+                  <a href="/jobs/search?keywords=<?= $job->job_model ?>" class="urgent tag">
+                    <?= ucfirst($job->job_model) ?>
+                  </a>
                 </div>
               </div>
             </div>

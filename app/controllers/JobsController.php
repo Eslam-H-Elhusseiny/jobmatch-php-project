@@ -15,7 +15,7 @@ class JobsController
     }
 
     /*
-     * Show all jobss
+     * Show all jobs
      * 
      * @return void
      */
@@ -23,8 +23,7 @@ class JobsController
     {
         $jobs = $this->db->query('SELECT * FROM jobs')->fetchAll();
 
-            // inspectAndDie($jobs);
-
+        // inspectAndDie($jobs);
 
         loadView('jobs/index', [
             'jobs' => $jobs
@@ -72,22 +71,19 @@ class JobsController
     public function search()
     {
         $keywords = isset($_GET['keywords']) ? trim($_GET['keywords']) : '';
-    
-        $query = "SELECT * FROM jobs WHERE (title LIKE :keywords)";
 
-    
+        $query = "SELECT * FROM jobs WHERE title LIKE :keywords OR description LIKE :keywords OR location LIKE :keywords OR job_type LIKE :keywords OR job_model LIKE :keywords";
+
+
         $params = [
             'keywords' => "%{$keywords}%"
         ];
-    
+
         $jobs = $this->db->query($query, $params)->fetchAll();
 
-        inspectAndDie($jobs);
+        // inspectAndDie($jobs);
         loadView('/jobs/index', [
-            'listings' => $jobs,
-            'keywords' => $keywords,
-          ]);
+            'jobs' => $jobs,
+        ]);
     }
-
-
 }

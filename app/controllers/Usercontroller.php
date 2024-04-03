@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use DateTime;
 use Framework\Database;
 use Framework\Validation;
 use Framework\Session;
@@ -15,6 +16,7 @@ class UserController
     $config = require basePath('config/db.php');
     $this->db = new Database($config);
   }
+
 
   /**
    * Show the login page
@@ -228,4 +230,41 @@ class UserController
 
     redirect('/');
   }
+
+  
+  /**
+   * Show the Profile
+   * 
+   * @return void
+   */
+  public function profile()
+  {
+
+    $calculateAge = function ($birthdate) {
+      $today = new DateTime();
+      $diff = $today->diff(new DateTime($birthdate));
+      return $diff->y;
+    };
+    // inspectAndDie(Session::get('user'));
+    // $email = $_POST['email'];
+
+    // $params = [
+    //   'email' => $email,
+    // ];
+
+    // $query = 'SELECT * FROM applicants where email = :email';
+
+    // $userData =  $this->db->query($query, $params)->fetchAll();
+
+    $userData =  Session::get('user');
+
+    // inspectAndDie(isset($userData['bio']));
+
+    loadView('profiles/user', [
+      'user' => $userData,
+      'calcAge' => $calculateAge
+    ]);
+  }
+
+
 }

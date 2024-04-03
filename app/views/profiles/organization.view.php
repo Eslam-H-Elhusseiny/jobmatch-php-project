@@ -27,7 +27,7 @@
         // $org_website = $_SESSION['organization']['website'];
         // $org_linkedin = $_SESSION['organization']['linkedin'];
 
-        $con = new mysqli("localhost", "root", "", "php_project", 3309);
+        $con = new mysqli("localhost", "root", "", "php_project", 3306);
         if ($con->connect_errno) {
           die("Connection failed!");
         }
@@ -73,7 +73,7 @@
         <?php
         $org_id = $_SESSION['organization']['id'];
 
-        $con = new mysqli("localhost", "root", "", "php_project", 3309);
+        $con = new mysqli("localhost", "root", "", "php_project", 3306);
         if ($con->connect_errno) {
           die("Connection failed!");
         }
@@ -112,7 +112,7 @@
             <h4 class="general-info">General Info</h4>
             <?php
             $org_id = $_SESSION['organization']['id'];
-            $conn = new mysqli("localhost", "root", "", "php_project", 3309);
+            $conn = new mysqli("localhost", "root", "", "php_project", 3306);
             $sql = "SELECT country, city, founded, website, linkedin FROM organizations WHERE id = $org_id";
             $result = $conn->query($sql);
             $data = mysqli_fetch_assoc($result);
@@ -173,7 +173,7 @@
 
         $fileContent = file_get_contents($fileTmpName);
 
-        $con = new mysqli("localhost", "root", "", "php_project", 3309);
+        $con = new mysqli("localhost", "root", "", "php_project", 3306);
 
         if ($con->connect_errno) {
           die("Connection failed!");
