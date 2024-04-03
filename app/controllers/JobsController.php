@@ -201,12 +201,13 @@ class JobsController
             'id' => $id,
         ];
 
-        $list = $this->db->query('SELECT applicants.* 
+        $list = $this->db->query('SELECT applicants.* ,status
         FROM app_job JOIN applicants 
         ON app_id = id WHERE job_id = :id  ', $params)->fetchAll();
         // inspectAndDie($list);
         loadView('jobs/applied', [
             'list' => $list,
+            'job_id' => $id
         ]);
     }
     // public function search()
@@ -357,7 +358,44 @@ class JobsController
 
     }
 
+    public function status()
+    {
+        $app_id = $_POST['app_id'];
+        $job_id = $_POST['job_id'];
+        $status = $_POST['status'];
 
+        $params = [
+            'app_id' => $app_id,
+            'job_id' => $job_id,
+            'status' => $status
+        ];
+        $updateQuery = "UPDATE app_job SET status=:status WHERE app_id = :app_id and job_id = :job_id";
+
+        $this->db->query($updateQuery, $params);
+        redirect("/jobs/$job_id/list");
+        // inspectAndDie($status);
+
+    }
+
+    public function appliedJobs($params)
+    {
+        $status = isset($_GET['status']) ? trim($_GET['status']) : '';
+
+        $id = $params['id'] ?? '';
+        // inspectAndDie($id);
+
+        $params = [
+            'id' => $id,
+            'status' => "%{$status}%",
+        ];
+
+        $query = "SELECT * from app_job aj
+        join applicants a on aj.app_id=a.id
+        where job_id =:id and status Like :status";
+
+        $applied_jobs = $this->db->query($query, $params)->fetchAll();
+        inspectAndDie($applied_jobs);
+    }
 
 
 }

@@ -24,6 +24,7 @@ $router->post('/jobs', 'JobsController@store');
 $router->get('/jobs', 'JobsController@index');
 $router->get('/jobs/search', 'JobsController@index');
 $router->get('/jobs/{id}', 'JobsController@show');
+$router->post('/jobs/status', 'JobsController@status');
 $router->get('/jobs/{id}/list', 'JobsController@list');
 // $router->get('/jobs/{id}/applicants', 'JobsController@jobApplicants');
 
@@ -32,6 +33,8 @@ $router->get('/jobs/{id}/apply', 'JobsController@apply');
 
 
 // return jobs posted by an organization
-// lsa m5lso4
 $router->get('/org/jobs', 'JobsController@jobOrganization');
+
+
+// return jobs applied by the user ( filter by application status)
 $router->get('/user/{id}/jobs', 'JobsController@appliedJobs');

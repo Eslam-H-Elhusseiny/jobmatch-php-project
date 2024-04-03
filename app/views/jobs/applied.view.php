@@ -34,12 +34,14 @@
             <td><?= $app->experience ?></td>
             <td><?= $app->country ?></td>
             <td>
-              <form action="" method="post">
+              <form action="/jobs/status" method="post">
+            <input type="hidden" name="app_id" value="<?php echo $app->id; ?>">
+            <input type="hidden" name="job_id" value="<?php echo $job_id; ?>">
                 <select name="status" id="status">
-                  <option value="applied">Applied</option>
-                  <option value="pending">Pending</option>
-                  <option value="shortlisted">Shortlisted</option>
-                  <option value="rejected">Rejected</option>
+                  <option value="applied" <?php if($app->status == 'applied') echo 'selected="selected"'; ?>>Applied</option>
+                  <option value="pending" <?php if($app->status == 'pending') echo 'selected="selected"'; ?>>Pending</option>
+                  <option value="shortlisted" <?php if($app->status == 'shortlisted') echo 'selected="selected"'; ?>>Shortlisted</option>
+                  <option value="rejected" <?php if($app->status == 'rejected') echo 'selected="selected"'; ?>>Rejected</option>
                 </select>
                 <button>&#9998;</button>
               </form>
