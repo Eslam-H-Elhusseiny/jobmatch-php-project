@@ -2,7 +2,7 @@
 return [
     'host' => 'localhost',
     'port' => '3306',
-    'dbname' => 'job_match',
+    'dbname' => 'php_project',
     'username' => "root",
-    'password' => '5Fe20ugo@s4s'
+    'password' => '0000'
 ];

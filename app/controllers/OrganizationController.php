@@ -64,7 +64,7 @@ class OrganizationController
     }
 
     if (!Validation::string($org_name, 2, 50)) {
-      $errors['org_name'] = 'first name must be between 2 and 50 characters';
+      $errors['org_name'] = 'Organization name must be between 2 and 50 characters';
     }
 
 
