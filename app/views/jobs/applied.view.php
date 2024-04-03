@@ -34,13 +34,14 @@
             <td><?= $app->experience ?></td>
             <td><?= $app->country ?></td>
             <td>
-              <form action="">
+              <form action="" method="post">
                 <select name="status" id="status">
                   <option value="applied">Applied</option>
                   <option value="pending">Pending</option>
                   <option value="shortlisted">Shortlisted</option>
                   <option value="rejected">Rejected</option>
                 </select>
+                <button>&#9998;</button>
               </form>
             </td>
           </tr>

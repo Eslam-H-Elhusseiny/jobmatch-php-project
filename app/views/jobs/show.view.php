@@ -15,7 +15,7 @@
       <div class="container job-header">
         <div class="job-details">
         <div class="company-logo">
-                <a href="/jobs/<?= $jobs->id?>">
+                <a href="/organizations/info/<?= $jobs->org_id?>">
                   <img
                     width="90"
                     src="https://apusthemes.com/wp-demo/superio/wp-content/uploads/2021/03/y9.jpg"
@@ -43,7 +43,7 @@
                   </div>
                   <div class="job-location">
                     <i class="fa fa-map-location-dot"></i>
-                    <a href="/jobs/search?keywords=<?= $jobs->location ?>"><?= $jobs->location ?></a>
+                    <a href="/jobs/search?location=<?= $jobs->location ?>"><?= $jobs->location ?></a>
                   </div>
                   <div class="job-salary">
                     <i class="fa fa-money-bills"></i>
@@ -53,11 +53,11 @@
                 </div>
                 <div class="job-metas-bottom">
                   <div class="">
-                    <a class="job-type tag" href="/jobs/search?keywords=<?= $jobs->job_type ?>">
+                    <a class="job-type tag" href="/jobs/search?job_type=<?= $jobs->job_type ?>">
                       <?= ucwords($jobs->job_type,'-') ?>
                     </a>
                   </div>
-                  <span class="urgent tag"><?= ucfirst($jobs->job_model) ?></span>
+                  <a href="/jobs/search?job_model=<?= $jobs->job_model ?>" class="urgent tag"><?= ucfirst($jobs->job_model) ?></a>
                 </div>
           </div>
         </div>
@@ -90,7 +90,7 @@
           <aside class="single-job-aside">
             <div class="job-location">
               <i class="fa fa-map-location-dot"></i>
-              <a href="/jobs/search?keywords=<?= $jobs->location ?>">Location: <?= $jobs->location ?></a>
+              <a href="/jobs/search?location=<?= $jobs->location ?>">Location: <?= $jobs->location ?></a>
             </div>
 
             <div class="job-category">

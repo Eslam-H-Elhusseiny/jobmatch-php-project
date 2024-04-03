@@ -457,6 +457,14 @@ table th {
 table select {
   padding: 0.5rem;
 }
+
+table button {
+  padding: 2px 4px;
+  font-size: var(--fsize-300);
+  background-color: #fafafa;
+  outline: none;
+  border: 1px solid black;
+}
 /* *SECTION - How It Works */
 
 .how-it-works {
