@@ -65,6 +65,7 @@
           <span class="expire">Application ends: <span class="date">May 19, 2026</span></span>
           <form action="">
             <button class="btn-apply">Apply Now</button>
+            <a href="/jobs/<?= $jobs->id ?>/list" class="btn-apply" style="margin-top: 1rem;">List</a>
           </form>
         </div>
       </div>

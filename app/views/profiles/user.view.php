@@ -18,7 +18,6 @@
     <?php loadPartial('navbar'); ?>
   </div>
   <!-- $userId = $_SESSION['user']['id']; -->
-
   <!-- Start top section -->
   <section class="profile-header container">
     <div class="profile-img">

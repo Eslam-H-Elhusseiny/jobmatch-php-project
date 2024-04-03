@@ -63,7 +63,6 @@
 
 .profile-nav-info h3 {
   font-size: 2rem;
-  font-family: sans-serif;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -143,7 +142,6 @@
   background: #fff;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   padding: 90px 30px 20px;
-  font-family: "Bree Serif", serif;
   /* margin: 0 10px; */
   z-index: 1;
 }
@@ -178,7 +176,6 @@
   width: 100%;
   border-radius: 3px;
   color: #fff;
-  font-family: "Bree Serif";
   font-size: 1rem;
   margin: 5px 2px;
   cursor: pointer;
@@ -373,7 +370,6 @@
     text-transform: lowercase;
   }
   .tab h1 {
-    font-family: "Bree Serif", sans-serif;
     display: flex;
     justify-content: center;
     margin: 20px auto;
@@ -415,7 +411,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .skills-label {
@@ -442,7 +438,6 @@
   color: white;
   cursor: pointer;
   margin-top: 20px;
-  font-family: "Bree Serif";
   transition: background 0.2s ease-in-out;
 }
 

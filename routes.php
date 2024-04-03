@@ -17,8 +17,14 @@ $router->post('/auth/organization/login', 'OrganizationController@authenticate',
 $router->get('/auth/user/profile', 'UserController@profile', ['auth']);
 $router->post('/auth/user/profile', 'UserController@profile', ['auth']);
 // $router->post('/auth/organization/profile', 'OrganizationController@profile', ['auth']);
+$router->get('/auth/organization/profile', 'OrganizationController@profile', ['auth']);
+$router->get('/organizations/info/{id}', 'OrganizationController@info');
+
+$router->get('/create/job', 'JobsController@create', ['auth']);
+$router->post('/jobs', 'JobsController@store');
 
 $router->get('/jobs', 'JobsController@index');
-$router->get('/jobs/search', 'JobsController@search');
+$router->get('/jobs/search', 'JobsController@index');
 $router->get('/jobs/{id}', 'JobsController@show');
+$router->get('/jobs/{id}/list', 'JobsController@list');
 $router->get('/user/{id}/jobs', 'JobsController@appliedJobs');
